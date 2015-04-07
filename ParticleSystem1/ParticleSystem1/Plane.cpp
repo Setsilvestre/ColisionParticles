@@ -41,6 +41,7 @@ void Plane::setPlaneFrom3Points(Point p1, Point p2, Point p3){
 	direc2.y = p3.coord.y - p1.coord.y;
 	direc2.z = p3.coord.z - p1.coord.z;
 	normal=cross(direc1, direc2);
+	normalizeNormal();
 	d = dot(-normal, point.coord);
 }
 void Plane::setDirectFromNormal(){
@@ -58,6 +59,7 @@ float Plane::distPlaneToPoint(Point q){
 
 vec3 Plane::computePlaneNormal(){
 	normal = cross(direc1, direc2);
+	normalizeNormal();
 	return normal;
 }
 
@@ -103,4 +105,9 @@ vec3 Plane::getNormal(){
 
 float Plane::getD(){
 	return d;
+}
+
+void Plane::normalizeNormal(){
+	normal=normal/length(normal);
+
 }

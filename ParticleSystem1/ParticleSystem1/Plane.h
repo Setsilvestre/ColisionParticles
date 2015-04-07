@@ -17,6 +17,7 @@ public:
 	void setPlaneFrom3Points(Point p1, Point p2, Point p3);
 	void setDirectFromNormal();
 	void computeD();
+	void normalizeNormal();
 	// functions
 	float distPlaneToPoint(Point q);
 	vec3 computePlaneNormal();

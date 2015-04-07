@@ -172,10 +172,9 @@ void Particle::updateParticle(const float& dt, UpdateMethod method)
 }
 
 void Particle::collisionWithPlane(Plane pla){
-	m_previousPosition = m_currentPosition;
-	vec3 w = (pla.getNormal()*m_currentPosition + pla.getD())*pla.getNormal();
-	m_currentPosition=m_currentPosition - (1 + getBouncing())*dot((pla.getNormal()*m_currentPosition+ pla.getD()),pla.getNormal());
-	m_velocity = m_velocity - (1 + getBouncing())*dot((pla.getNormal()*m_velocity),pla.getNormal());
+	m_currentPosition = m_currentPosition - (1 + getBouncing())*(dot(pla.getNormal(), m_currentPosition) + pla.getD())* pla.getNormal();
+	vec3 temp = m_velocity - (1 + getBouncing())*dot(pla.getNormal(), m_velocity);
+	setVelocity(temp.x*pla.getNormal().x, temp.y*pla.getNormal().y, temp.z*pla.getNormal().z);
 }
 
 float Particle::getMass(){
