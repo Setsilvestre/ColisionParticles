@@ -64,3 +64,8 @@ Plane Sphere::returnPlane(Point p){
 	myPlane.normalizeNormal();
 	return myPlane;
 }
+
+void Sphere::set(Point r, float radius){
+	this->center = r;
+	this->radius = radius;
+}

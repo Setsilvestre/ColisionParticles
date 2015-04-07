@@ -9,6 +9,7 @@ public:
 	Sphere();
 	~Sphere();
 	Sphere(Point center, float radius);
+	void set(Point r, float radius);
 	//functions
 	bool InsideorOut(vec3 p);
 	float ComputeArea();
